@@ -1,7 +1,14 @@
 const API_URL = 'https://challenge.broobe.net/api/v1/';
 
 export const get = async (url) => {
-    const response = await fetch(`${API_URL}${url}`);
+    const token = localStorage.getItem('token');
+    const response = await fetch(`${API_URL}${url}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization':  `Bearer ${token}`
+        },
+    });
     const data = await response.json();
     return data;
 }
