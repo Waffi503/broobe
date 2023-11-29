@@ -3,15 +3,18 @@ import Login from './pages/login';
 import Signup from './pages/signup';
 import Layout from './layout/layout';
 import Dashboard from './pages/dashboard';
+import Issue from './pages/issue';
 function App() {
 
   return (
     <>
     <Routes>
         <Route element={<Layout />} >
-          <Route index element={<ProtectedRoute> <Dashboard /> </ProtectedRoute> } />
+          <Route path="/" element={<Navigate to="/issues" />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
+          <Route path='issues' element={<ProtectedRoute> <Dashboard /> </ProtectedRoute> } />
+          <Route path='issues/new' element={<ProtectedRoute><Issue /></ProtectedRoute>} />
 
         </Route>
 
