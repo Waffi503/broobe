@@ -5,7 +5,7 @@ import Layout from './layout/layout';
 import Dashboard from './pages/dashboard';
 import Issue from './pages/issue';
 import EditIssue from './pages/editIssue';
-import  {AuthContextProvider} from '@/contexts/authContext';
+import  {AuthContextProvider} from '@/contexts/authcontext';
 import useAuth from '@/hooks/useAuth';
 function App() {
 
