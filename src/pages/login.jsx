@@ -4,8 +4,8 @@ import { useForm  } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Button } from '@/components/ui/button';
-import { login } from '@/services/auth';
 import { useNavigate } from 'react-router-dom';
+import useAuth  from '@/hooks/useAuth';
 
 
 
@@ -17,6 +17,7 @@ const schema = z.object({
 export default function Login() {
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const { login } = useAuth();
 
     const {
       register,
@@ -29,9 +30,9 @@ export default function Login() {
     )
 
     const onSubmit = async (data) => {
-      const {error} = await login(data)
-      if(error) {
-        return setError(error)
+      const token = await login(data)
+      if(!token) {
+        return setError('Invalid credentials')
       }
 
       return navigate('/')

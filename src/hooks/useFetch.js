@@ -8,7 +8,6 @@ export default function useFetch(getData, body = null){
         const fetchData = async () => {
             try {
                 const response = await getData(body);
-                console.log(response, 'response');
                 setData(response.data);
             } catch (error) {
                 setError(error.message);

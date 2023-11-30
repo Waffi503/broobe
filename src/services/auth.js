@@ -6,19 +6,11 @@ export const login = async (body) => {
     try{
         const response = await post('login', body);
         localStorage.setItem('token', response.token);
-        return  {
-            status: response.status,
-            message: response.message,
-            data: response.data,
-            error:''
-        };
+        return response.token;
 
     } catch (error) {
-        return {
-            status: 500,
-            message: 'Error en el servidor',
-            error: error.message
-        };          
+        console.log(error);
+        return null;          
     }
 }
 
